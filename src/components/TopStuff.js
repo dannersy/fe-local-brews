@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { Navbar, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 class TopStuff extends Component {
+  constructor(){
+    super()
+    this.state = {
+      searchValue: ''
+    }
+  };
+
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.breweries(this.state.searchValue)
+  }
+
   render(){
     return (
       <Navbar fluid style={{marginBottom: "0", height: "50px"}}>
@@ -14,10 +26,11 @@ class TopStuff extends Component {
         <Navbar.Collapse>
           <Navbar.Form pullLeft>
             <FormGroup>
-              <FormControl type="text" placeholder="Search Zip" />
+              <FormControl type="text" placeholder="Search Zip" onChange={(event) =>
+                  this.setState({searchValue: event.target.value})} />
             </FormGroup>
             {' '}
-            <Button type="submit">Submit</Button>
+            <Button type="submit" onClick={(event) => this.handleSubmit(event)}>Submit</Button>
           </Navbar.Form>
         </Navbar.Collapse>
       </Navbar>

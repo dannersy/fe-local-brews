@@ -25,18 +25,18 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      breweries: []
+      breweries: {}
     }
   }
 
-  getBreweries() {
-    Brew.get
+  getBreweries(searchValue) {
+    Brew.breweries(searchValue)
   }
 
   render() {
     return (
       <div>
-        <TopStuff breweries={ () => this.getBreweries() } />
+        <TopStuff breweries={ (searchValue) => this.getBreweries(searchValue) } />
         <Grid fluid>
           <Row className="breweries">
             <Map sm={6} md={4} style={styles.map}/>
