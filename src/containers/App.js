@@ -25,7 +25,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      breweries: []
+      breweries: [],
+      selected: 0
     }
   }
 
@@ -36,6 +37,11 @@ class App extends Component {
     })
   }
 
+  selectLoc(num){
+    console.log(num);
+    this.setState({selected: num})
+  }
+
   render() {
     console.log("new breweries state: ", this.state.breweries);
     return (
@@ -44,7 +50,11 @@ class App extends Component {
         <Grid fluid>
           <Row className="breweries">
             <Map sm={6} md={4} style={styles.map}/>
-            <Col sm={6} md={4}><Breweries breweries={this.state.breweries}/></Col>
+            <Col sm={6} md={4}><Breweries
+                breweries={this.state.breweries}
+                selectLoc={ (num) => this.selectLoc(num) }
+                selected={this.state.selected}
+                /></Col>
           </Row>
         </Grid>
       </div>
