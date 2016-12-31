@@ -16,7 +16,7 @@ class TopStuff extends Component {
 
   render(){
     return (
-      <Navbar fluid style={{marginBottom: "0", height: "50px"}}>
+      <Navbar fluid staticTop style={{marginBottom: "0", height: "50px"}}>
         <Navbar.Header>
           <Navbar.Brand>
             <p>Local Brews</p>

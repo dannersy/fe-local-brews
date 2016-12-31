@@ -1,6 +1,5 @@
 //Package Stuff
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
 
 //Config
 import Brew from "../utils/brewHelp.js";
@@ -14,10 +13,8 @@ import Breweries from "../components/Breweries.js";
 // Styles
 const styles = {
   map: {
-    height: '100vh',
-    width: '100vw',
-    position: "fixed",
-    zIndex: "-1"
+    height: "100%",
+    width: "100%",
   }
 };
 
@@ -47,16 +44,16 @@ class App extends Component {
     return (
       <div>
         <TopStuff breweries={ (searchValue) => this.getBreweries(searchValue) } />
-        <Grid fluid>
-          <Row className="breweries">
-            <Map sm={6} md={4} style={styles.map}/>
-            <Col sm={6} md={4}><Breweries
-                breweries={this.state.breweries}
-                selectLoc={ (num) => this.selectLoc(num) }
-                selected={this.state.selected}
-                /></Col>
-          </Row>
-        </Grid>
+        <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '100%'}}>
+          <Map style={styles.map}/>
+        </div>
+        <div style={{position: 'absolute', left: 0, top: 50, width: '40%', height: '100%'}}>
+          <Breweries
+            breweries={this.state.breweries}
+            selectLoc={ (num) => this.selectLoc(num) }
+            selected={this.state.selected}
+            />
+        </div>
       </div>
     );
   }
