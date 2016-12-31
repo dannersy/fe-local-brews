@@ -5,13 +5,14 @@ const Brew = {
   breweries: (searchValue) => {
     console.log(searchValue);
     const searchUrl = url + "/locations";
-    axios({
+    return axios({
       method: 'post',
       url: searchUrl,
       data: {location: searchValue}
     })
       .then(function(data){
-        console.log("Request Completed with: ", data);
+        console.log("Request Completed with: ", data.data.data);
+        return data.data.data
       })
       .catch(function(error){
         console.log('Request Failed ', error);

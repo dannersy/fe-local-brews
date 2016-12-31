@@ -25,22 +25,26 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      breweries: {}
+      breweries: []
     }
   }
 
   getBreweries(searchValue) {
-    Brew.breweries(searchValue)
+    let app = this;
+    Brew.breweries(searchValue).then(function(res){
+      app.setState({breweries: res})
+    })
   }
 
   render() {
+    console.log("new breweries state: ", this.state.breweries);
     return (
       <div>
         <TopStuff breweries={ (searchValue) => this.getBreweries(searchValue) } />
         <Grid fluid>
           <Row className="breweries">
             <Map sm={6} md={4} style={styles.map}/>
-            <Col sm={6} md={4}><Breweries /></Col>
+            <Col sm={6} md={4}><Breweries breweries={this.state.breweries}/></Col>
           </Row>
         </Grid>
       </div>
