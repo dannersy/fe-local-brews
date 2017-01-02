@@ -4,23 +4,26 @@ import Marker from "./Marker.js"
 
 class Map extends Component {
 
-  constructor(){
-    super()
-    this.state = {
-      center: {lat: 39.50, lng: -98.35},
-      zoom: 4
-    }
-  }
-
   _locations(){
-    // this.setState({
-    //   center: {
-    //     lat: this.props.breweries[0].lat,
-    //     lng: this.props.breweries[0].lng
-    //   },
-    //   zoom: 7
-    // })
-    // return console.log(this.state.center);
+    let results = this.props.results;
+    let text = "";
+    let locations = results.breweries.map(function(loc, i){
+      if (results.selected === i){
+        text = `${i+1}.` + loc.brewery.nameShortDisplay
+      } else {
+        text = `${i+1}`
+      }
+      return(
+        <Marker
+          key={i}
+          lat={loc.latitude}
+          lng={loc.longitude}
+          text={text}
+          location={loc}
+        />
+      )
+    })
+    return locations
   }
 
   render() {
@@ -30,10 +33,9 @@ class Map extends Component {
           key: 'AIzaSyBwV_7tbM72Vm45JzB3CX-1nv9w7s14wh0',
           language: 'en'
         }}
-        center={this.state.center}
-        zoom={this.state.zoom}>
-        <Marker lat={39.50} lng={-98.35} text={'A'} />
-        {this.props.breweries.length ? this._locations() : null}
+        center={this.props.results.bounds.center}
+        zoom={this.props.results.bounds.zoom}>
+        {this.props.results.breweries ? this._locations() : null}
       </GoogleMap>
     )
   }

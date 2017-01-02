@@ -23,14 +23,30 @@ class App extends Component {
     super()
     this.state = {
       breweries: [],
-      selected: 0
+      selected: 0,
+      bounds: {
+        center: {lat: 39.50, lng: -98.35},
+        zoom: 4
+      }
     }
   }
 
   getBreweries(searchValue) {
     let app = this;
     Brew.breweries(searchValue).then(function(res){
-      app.setState({breweries: res})
+      if (res){
+        app.setState({
+          breweries: res,
+          bounds: {
+            center: {lat: res[0].latitude, lng: res[0].longitude},
+            zoom: 13
+          }
+        })
+      } else {
+        app.setState({
+          breweries: undefined
+        })
+      };
     })
   }
 
@@ -43,11 +59,11 @@ class App extends Component {
     console.log("new breweries state: ", this.state.breweries);
     return (
       <div>
-        <TopStuff breweries={ (searchValue) => this.getBreweries(searchValue) } />
-        <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '100%'}}>
-          <Map style={styles.map}/>
+        <TopStuff breweries={ (searchValue) => this.getBreweries(searchValue) } style={{zIndex: 0}}/>
+        <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '93%', zIndex: "1"}}>
+          <Map style={styles.map} results={this.state}/>
         </div>
-        <div style={{position: 'absolute', left: 0, top: 50, width: '40%', height: '100%'}}>
+        <div style={{position: 'absolute', left: 0, top: 50, width: '40%', height: '93%', overflow: "scroll", zIndex: "1"}}>
           <Breweries
             breweries={this.state.breweries}
             selectLoc={ (num) => this.selectLoc(num) }

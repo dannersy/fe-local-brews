@@ -17,7 +17,22 @@ class Breweries extends Component {
   //   super(props)
   // }
 
+  _noMatch(){
+    return (
+      <div>
+        <h3>No results found with your search</h3>
+      </div>
+    )
+  }
+
   _populateList(){
+    if (this.props.breweries.length === 0){
+      return (
+        <div>
+          <h3>Search a zipcode above to find breweries!</h3>
+        </div>
+      )
+    }
     let app = this
     let image = 'url("http://placehold.it/100x100?text=No+Image")'
     let breweryList = app.props.breweries.map(function(loc, i){
@@ -31,9 +46,9 @@ class Breweries extends Component {
         image = 'url("http://placehold.it/100x100?text=No+Image")'
       }
       return (
-        <ListGroupItem onClick={() => app.props.selectLoc(i)} active={selected} key={i}>
+        <ListGroupItem onClick={() => app.props.selectLoc(i)} active={selected} id={loc.breweryId} key={i}>
           <div className="breweryImage" style={{backgroundImage: image}}></div>
-          <h3>{loc.brewery.name}</h3>
+          <h3>{i+1}. {loc.brewery.name}</h3>
           <p>{loc.locationTypeDisplay}</p>
         </ListGroupItem>
       )
@@ -45,13 +60,7 @@ class Breweries extends Component {
   render(){
     return(
       <ListGroup>
-        {this.props.breweries.length ? this._populateList() :
-          <ListGroupItem active={true}>
-            <div className="breweryImage" style={{backgroundImage: 'url("http://placehold.it/100x100?text=No+Image")'}}></div>
-            <h3>Test</h3>
-            <p>Test</p>
-          </ListGroupItem>
-        }
+        {this.props.breweries ? this._populateList() : this._noMatch()}
       </ListGroup>
     )
   }
