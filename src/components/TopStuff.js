@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import "../stylesheets/TopStuff.css";
 import Geosuggest from 'react-geosuggest';
 
+let suggestion = "derp"
+
 class TopStuff extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      searchValue: ''
+      radius: 5
     }
   };
 
-  handleSubmit(e){
+  _handleSubmit(e){
     e.preventDefault();
-    this.props.breweries(this.state.searchValue)
+    this.props.breweries(suggestion, this.state.radius);
+  }
+
+  _selectRadius(e){
+    switch(e){
+      case "1":
+        this.setState({radius: 1})
+        break;
+      case "5":
+        this.setState({radius: 5})
+        break;
+      case "10":
+        this.setState({radius: 10})
+        break;
+      default:
+        return
+    }
   }
 
   onSuggestSelect(suggest) {
-    console.log(suggest);
+    // console.log(derp);
+    suggestion = suggest
   }
 
   render(){
@@ -29,11 +48,9 @@ class TopStuff extends Component {
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse style={{overflow: "visible", backgroundColor: "#F8F8F8"}}>
           <Geosuggest
             placeholder={"Enter a city, address or zipcode"}
             country={"us"}
-            types={null}
             autoActivateFirstSuggest={true}
             onSuggestSelect={this.onSuggestSelect}
              />
@@ -43,8 +60,17 @@ class TopStuff extends Component {
                   this.setState({searchValue: event.target.value})} />
             </FormGroup>
             {' '}
-            <Button type="submit" onClick={(event) => this.handleSubmit(event)}>Submit</Button>
-          </Navbar.Form>*/}
+          </Navbar.Form>
+          <Navbar.Brand>
+            <p>Radius(mi):</p>
+          </Navbar.Brand>*/}
+          <DropdownButton title={`${this.state.radius} mi`} onSelect={(e) => this._selectRadius(e)} id="dropdown-radius" >
+            <MenuItem eventKey="1">1 mi</MenuItem>
+            <MenuItem eventKey="5">5 mi</MenuItem>
+            <MenuItem eventKey="10">10 mi</MenuItem>
+          </DropdownButton>
+          <Button type="submit" onClick={(event) => this._handleSubmit(event)}>Submit</Button>
+        <Navbar.Collapse style={{overflow: "visible", backgroundColor: "#F8F8F8"}}>
         </Navbar.Collapse>
       </Navbar>
     );

@@ -12,7 +12,7 @@ const dot = {
   transform: "rotate(45deg)",
   textAlign: "center",
   fontWeight: "bolder",
-  fontSize: "medium"
+  fontSize: "16px"
 }
 
 class Marker extends Component {

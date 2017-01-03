@@ -31,15 +31,19 @@ class App extends Component {
     }
   }
 
-  getBreweries(searchValue) {
+  getBreweries(searchValue, radius) {
     let app = this;
-    Brew.breweries(searchValue).then(function(res){
+    let data = {
+      loc: searchValue.location,
+      rad: radius
+    }
+    Brew.breweries(data).then(function(res){
       if (res){
         app.setState({
           breweries: res,
           bounds: {
-            center: {lat: res[0].latitude, lng: res[0].longitude},
-            zoom: 13
+            center: {lat: searchValue.location.lat, lng: searchValue.location.lng},
+            zoom: 12
           }
         })
       } else {
@@ -51,15 +55,15 @@ class App extends Component {
   }
 
   selectLoc(num){
-    console.log(num);
+    //console.log(num);
     this.setState({selected: num})
   }
 
   render() {
-    console.log("new breweries state: ", this.state.breweries);
+    //console.log("new breweries state: ", this.state.breweries);
     return (
       <div>
-        <TopStuff breweries={ (searchValue) => this.getBreweries(searchValue) } style={{zIndex: 0}}/>
+        <TopStuff breweries={ (searchValue, radius) => this.getBreweries(searchValue, radius) } style={{zIndex: 0}}/>
         <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '93%', zIndex: "1"}}>
           <Map style={styles.map} results={this.state} selectLoc={ (num) => this.selectLoc(num) } />
         </div>
