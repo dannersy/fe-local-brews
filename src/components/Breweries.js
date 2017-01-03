@@ -29,7 +29,7 @@ class Breweries extends Component {
     if (this.props.breweries.length === 0){
       return (
         <div>
-          <h3>Search a zipcode above to find breweries!</h3>
+          <h3>Search a city, address or zipcode above to find breweries!</h3>
         </div>
       )
     }
