@@ -59,15 +59,13 @@ class App extends Component {
   }
 
   selectLoc(num){
-    //console.log(num);
     this.setState({selected: num})
   }
 
   render() {
-    //console.log("new breweries state: ", this.state.breweries);
     return (
       <div>
-        <BreweryModal breweries={this.state.breweries} />
+        <BreweryModal ref="modal" breweries={this.state.breweries} selected={this.state.selected}/>
         <TopStuff breweries={ (searchValue, radius) => this.getBreweries(searchValue, radius) } style={{zIndex: 0}}/>
         <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '93%', zIndex: "1"}}>
           <Map style={styles.map} results={this.state} selectLoc={ (num) => this.selectLoc(num) } />
@@ -77,6 +75,7 @@ class App extends Component {
             breweries={this.state.breweries}
             selectLoc={ (num) => this.selectLoc(num) }
             selected={this.state.selected}
+            showModal={ () => this.refs.modal.open() }
             />
         </div>
       </div>

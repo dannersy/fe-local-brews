@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
-import {ListGroup, ListGroupItem} from 'react-bootstrap';
+import {ListGroup, ListGroupItem } from 'react-bootstrap';
 import "../stylesheets/Breweries.css"
 
-// let styles = {
-//   icon: {
-//     height: "100px",
-//     width: "100px",
-//     backgroundPosition: "center",
-//     float: "left",
-//     marginRight: "10px",
-//   }
-// };
 
 class Breweries extends Component {
-  // constructor(props){
-  //   super(props)
-  // }
+
+  constructor(){
+    super()
+    this.state = {
+      beers: []
+    }
+  }
 
   _noMatch(){
     return (
@@ -23,6 +18,15 @@ class Breweries extends Component {
         <h3>No results found with your search</h3>
       </div>
     )
+  }
+
+  _giveButton(selected){
+    if (selected === true){
+      return (
+        <div className={"btn btn-default"} style={{float: "right"}} onClick={() => this.props.showModal()}>Show Info & Beers</div>
+      )
+    }
+    return
   }
 
   _populateList(){
@@ -50,6 +54,7 @@ class Breweries extends Component {
           <div className="breweryImage" style={{backgroundImage: image}}></div>
           <h3>{i+1}. {loc.brewery.name}</h3>
           <p>{loc.locationTypeDisplay}</p>
+          {app._giveButton(selected)}
         </ListGroupItem>
       )
     })

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Modal, Button} from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 class BreweryModal extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      showModal: true
+      showModal: false
     }
   }
 
@@ -17,10 +17,14 @@ class BreweryModal extends Component {
     this.setState({ showModal: true });
   }
 
+  // componentWillUpdate(){
+  //
+  // }
+
   render(){
     return (
       <div>
-        <Modal show={this.state.showModal} onHide={this.close}>
+        <Modal show={this.state.showModal} onHide={ () => this.close() }>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
@@ -43,7 +47,7 @@ class BreweryModal extends Component {
             <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
+            <Button onClick={ () => this.close() }>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>
