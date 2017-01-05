@@ -5,6 +5,10 @@ import React, { Component } from 'react';
 import Brew from "../utils/brewHelp.js";
 import '../stylesheets/App.css';
 
+// Containers
+
+import BreweryModal from "../containers/BreweryModal.js";
+
 // Components
 import Map from "../components/Map.js";
 import TopStuff from "../components/TopStuff.js";
@@ -63,6 +67,7 @@ class App extends Component {
     //console.log("new breweries state: ", this.state.breweries);
     return (
       <div>
+        <BreweryModal breweries={this.state.breweries} />
         <TopStuff breweries={ (searchValue, radius) => this.getBreweries(searchValue, radius) } style={{zIndex: 0}}/>
         <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '93%', zIndex: "1"}}>
           <Map style={styles.map} results={this.state} selectLoc={ (num) => this.selectLoc(num) } />
