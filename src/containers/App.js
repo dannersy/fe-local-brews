@@ -65,7 +65,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BreweryModal ref="modal" breweries={this.state.breweries} selected={this.state.selected}/>
+        <BreweryModal ref="modal" breweries={this.state.breweries} selected={this.state.selected} />
         <TopStuff breweries={ (searchValue, radius) => this.getBreweries(searchValue, radius) } style={{zIndex: 0}}/>
         <div style={{position: 'absolute', right: 0, top: 50, width: '60%', height: '93%', zIndex: "1"}}>
           <Map style={styles.map} results={this.state} selectLoc={ (num) => this.selectLoc(num) } />

@@ -13,7 +13,7 @@ class TopStuff extends Component {
     }
   };
 
-  _handleSubmit(e){
+  handleSubmit(e){
     e.preventDefault();
     this.props.breweries(suggestion, this.state.radius);
   }
@@ -35,7 +35,7 @@ class TopStuff extends Component {
   }
 
   onSuggestSelect(suggest) {
-    // console.log(derp);
+    console.log(this.props);
     suggestion = suggest
   }
 
@@ -53,23 +53,14 @@ class TopStuff extends Component {
             country={"us"}
             autoActivateFirstSuggest={true}
             onSuggestSelect={this.onSuggestSelect}
+            onBlur={this.onBlur}
              />
-          {/*<Navbar.Form pullLeft>
-            <FormGroup>
-              <FormControl type="text" placeholder="Search Zip" onChange={(event) =>
-                  this.setState({searchValue: event.target.value})} />
-            </FormGroup>
-            {' '}
-          </Navbar.Form>
-          <Navbar.Brand>
-            <p>Radius(mi):</p>
-          </Navbar.Brand>*/}
           <DropdownButton title={`${this.state.radius} mi`} onSelect={(e) => this._selectRadius(e)} id="dropdown-radius" >
             <MenuItem eventKey="1">1 mi</MenuItem>
             <MenuItem eventKey="5">5 mi</MenuItem>
             <MenuItem eventKey="10">10 mi</MenuItem>
           </DropdownButton>
-          <Button type="submit" onClick={(event) => this._handleSubmit(event)}>Submit</Button>
+          <Button type="submit" onClick={(event) => this.handleSubmit(event)}>Submit</Button>
         <Navbar.Collapse style={{overflow: "visible", backgroundColor: "#F8F8F8"}}>
         </Navbar.Collapse>
       </Navbar>

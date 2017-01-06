@@ -5,7 +5,8 @@ class BreweryModal extends Component {
   constructor(props){
     super(props)
     this.state = {
-      showModal: false
+      showModal: false,
+
     }
   }
 
@@ -17,39 +18,48 @@ class BreweryModal extends Component {
     this.setState({ showModal: true });
   }
 
-  // componentWillUpdate(){
-  //
-  // }
-
-  render(){
-    return (
-      <div>
+  _buildModal(brewery){
+    if (brewery === undefined){
+      return (
         <Modal show={this.state.showModal} onHide={ () => this.close() }>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Loading Brewery</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-            <h4>Popover in a modal</h4>
-            <hr />
-
-            <h4>Overflowing text to show scroll behavior</h4>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>........</p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={ () => this.close() }>Close</Button>
           </Modal.Footer>
         </Modal>
+      )
+    }
+    return(
+      <Modal show={this.state.showModal} onHide={ () => this.close() }>
+        <Modal.Header closeButton>
+          <Modal.Title>{brewery.brewery.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{brewery.streetAddress}</p>
+          <p>{brewery.phone}</p>
+          <a target="_blank" href={brewery.website}>{brewery.website}</a>
+          <hr />
+
+          <h4>Description:</h4>
+          <p>{brewery.brewery.description}</p>
+          </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={ () => this.close() }>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
+  render(){
+    let brewery = this.props.breweries[this.props.selected]
+    console.log(brewery);
+    return (
+      <div>
+        {this.props.breweries ? this._buildModal(brewery) : null}
       </div>
     )
   }
