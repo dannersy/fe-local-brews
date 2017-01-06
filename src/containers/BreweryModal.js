@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import Brew from "../utils/brewHelp.js";
 
 class BreweryModal extends Component {
   constructor(props){
     super(props)
     this.state = {
       showModal: false,
-
+      beers: undefined
     }
   }
+
 
   close() {
     this.setState({ showModal: false });
   }
 
   open() {
+    console.log("Open Happened");
+    let app = this;
+    let breweryId = this.props.breweries[this.props.selected].breweryId
+    let data = {brewery: breweryId}
+    console.log("breweryId: ", breweryId);
     this.setState({ showModal: true });
+    Brew.brews(data).then(function(res){
+      console.log(res);
+      if (res){
+        app.setState({
+          beers: res
+        })
+      } else {
+        app.setState({
+          beers: undefined
+        })
+      };
+    })
   }
 
   _buildModal(brewery){

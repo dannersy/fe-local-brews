@@ -35,7 +35,7 @@ class TopStuff extends Component {
   }
 
   onSuggestSelect(suggest) {
-    console.log(this.props);
+    // console.log(this.props);
     suggestion = suggest
   }
 
