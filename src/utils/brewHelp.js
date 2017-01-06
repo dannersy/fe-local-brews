@@ -15,7 +15,7 @@ const Brew = {
       }
     })
     .then(function(data){
-      console.log("Request Completed with: ", data.data.data);
+      //console.log("Brewery Req Completed with: ", data.data.data);
       return data.data.data
     })
     .catch(function(error){
@@ -31,7 +31,7 @@ const Brew = {
       data: breweryId
     })
     .then(function(data){
-      console.log("Request Completed with: ", data.data.data);
+      console.log("Beer Req Completed with: ", data.data.data);
       return data.data.data
     })
     .catch(function(error){

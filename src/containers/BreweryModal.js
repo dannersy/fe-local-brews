@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Brew from "../utils/brewHelp.js";
 
 class BreweryModal extends Component {
@@ -17,14 +17,14 @@ class BreweryModal extends Component {
   }
 
   open() {
-    console.log("Open Happened");
+    //console.log("Open Happened");
     let app = this;
     let breweryId = this.props.breweries[this.props.selected].breweryId
     let data = {brewery: breweryId}
-    console.log("breweryId: ", breweryId);
+    //console.log("breweryId: ", breweryId);
     this.setState({ showModal: true });
     Brew.brews(data).then(function(res){
-      console.log(res);
+      //console.log(res);
       if (res){
         app.setState({
           beers: res
@@ -35,6 +35,22 @@ class BreweryModal extends Component {
         })
       };
     })
+  }
+
+  _populateBeers(){
+    console.log("All beers: ", this.state.beers.length);
+    let beers = this.state.beers.map(function(beer, i){
+      if (!beer.availableId){
+        return
+      }
+      console.log("Beer with availableId: ",beer);
+      // return (
+      //   <ListGroupItem onClick={() => app.props.selectLoc(i)} active={selected} id={loc.breweryId} key={i}>
+      //
+      //   </ListGroupItem>
+      // )
+    })
+    return beers
   }
 
   _buildModal(brewery){
@@ -67,6 +83,9 @@ class BreweryModal extends Component {
           <h4>Description:</h4>
           <p>{brewery.brewery.description}</p>
           </Modal.Body>
+        <ListGroup>
+          {this.state.beers === undefined ? null : this._populateBeers()}
+        </ListGroup>
         <Modal.Footer>
           <Button onClick={ () => this.close() }>Close</Button>
         </Modal.Footer>
@@ -75,7 +94,6 @@ class BreweryModal extends Component {
   }
   render(){
     let brewery = this.props.breweries[this.props.selected]
-    console.log(brewery);
     return (
       <div>
         {this.props.breweries ? this._buildModal(brewery) : null}
