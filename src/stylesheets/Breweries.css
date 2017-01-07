@@ -6,3 +6,31 @@
   float: left;
   margin-right: 10px;
 }
+
+
+.beer-entry {
+  position: relative;
+  overflow: hidden;
+}
+
+#beer-content{
+  z-index: 5;
+  font-weight: bold;
+  opacity: 1;
+}
+
+#beer-image {
+  background-position: center;
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  opacity: 0.4;
+  z-index: 0;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  transform: rotate(30deg);
+}

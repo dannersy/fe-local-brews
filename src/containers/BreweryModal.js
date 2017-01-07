@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Brew from "../utils/brewHelp.js";
+import "../stylesheets/Breweries.css";
 
 class BreweryModal extends Component {
   constructor(props){
@@ -10,7 +11,6 @@ class BreweryModal extends Component {
       beers: undefined
     }
   }
-
 
   close() {
     this.setState({ showModal: false });
@@ -38,17 +38,29 @@ class BreweryModal extends Component {
   }
 
   _populateBeers(){
+    let background = "";
     console.log("All beers: ", this.state.beers.length);
     let beers = this.state.beers.map(function(beer, i){
       if (!beer.availableId){
-        return
+        return null
+      }
+      if (beer.labels && beer.labels.large){
+        background = beer.labels.large
       }
       console.log("Beer with availableId: ",beer);
-      // return (
-      //   <ListGroupItem onClick={() => app.props.selectLoc(i)} active={selected} id={loc.breweryId} key={i}>
-      //
-      //   </ListGroupItem>
-      // )
+      return (
+        <ListGroupItem className="beer-entry" key={i}>
+          <div id="beer-image" style={{backgroundImage:`url(${background})`}}> </div>
+          <div>
+            <h4 id="beer-content">{beer.name}</h4>
+          </div>
+          <div id="beer-content">{beer.description}</div>
+          <div>
+            <p id="beer-content">IBU: {beer.ibu}</p>
+            <p id="beer-content">ABV: {beer.abv}</p>
+          </div>
+        </ListGroupItem>
+      )
     })
     return beers
   }
@@ -82,7 +94,12 @@ class BreweryModal extends Component {
 
           <h4>Description:</h4>
           <p>{brewery.brewery.description}</p>
-          </Modal.Body>
+        </Modal.Body>
+        <div className="modal-header">
+          <h4 className="modal-title">
+            Beer:
+          </h4>
+        </div>
         <ListGroup>
           {this.state.beers === undefined ? null : this._populateBeers()}
         </ListGroup>
@@ -96,7 +113,7 @@ class BreweryModal extends Component {
     let brewery = this.props.breweries[this.props.selected]
     return (
       <div>
-        {this.props.breweries ? this._buildModal(brewery) : null}
+        {this.props.breweries ? this._buildModal(brewery) : <h4>No brews listed!</h4>}
       </div>
     )
   }

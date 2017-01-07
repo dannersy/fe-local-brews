@@ -17,19 +17,6 @@ const dot = {
 
 class Marker extends Component {
 
-  // _notSelected(){
-  //   return(
-  //     <div className="not-selected">{this.props.key}</div>
-  //   )
-  // }
-  //
-  // _selected(){
-  //   return(
-  //     <div className="selected">{this.props.location.brewery.nameShortDisplay}</div>
-  //   )
-  // }
-
-
   render(){
     return (
     <div style={this.props.markerStyle} onClick={ () => this.props.selectLoc() }>
