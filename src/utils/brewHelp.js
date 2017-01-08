@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://www.wrathofcode.io"
+const url = "https://www.wrathofcode.io"
 // const url = "http://localhost:8080"
 
 const Brew = {
