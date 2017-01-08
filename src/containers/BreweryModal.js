@@ -40,7 +40,7 @@ class BreweryModal extends Component {
   _populateBeers(){
     //let background = "";
     let beerStyle = ""
-    console.log("All beers: ", this.state.beers.length);
+    //console.log("All beers: ", this.state.beers.length);
     let beers = this.state.beers.map(function(beer, i){
       if (!beer.availableId){
         return null
@@ -51,7 +51,7 @@ class BreweryModal extends Component {
       // if (beer.labels && beer.labels.large){
       //   background = beer.labels.large
       // }
-      console.log("Beer with availableId: ",beer);
+      //console.log("Beer with availableId: ",beer);
       return (
         <ListGroupItem className="beer-entry" key={i}>
           <div className="title-box">
