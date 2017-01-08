@@ -1,0 +1,199 @@
+/**/_xdc_._h4s0o3 && _xdc_._h4s0o3( {
+   "predictions" : [
+      {
+         "description" : "New York, NY, United States",
+         "id" : "7eae6a016a9c6f58e2044573fb8f14227b6e1f96",
+         "matched_substrings" : [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJOwg_06VPwokRYv534QaPC8g",
+         "reference" : "CkQzAAAAwlLngDRyRrAeGwzLQTYTPM4yMJhh43ubiTW7BVK20zsIJkEExt6ZsbIzXOFJie8oHofq-8nUPsEvnhRFyunT-BIQWp1vmBc1aZFm30u2ZrefoBoUeNjP59knTliu1nreh_jAdi0t-ZQ",
+         "structured_formatting" : {
+            "main_text" : "New York",
+            "main_text_matched_substrings" : [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "NY, United States"
+         },
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "New York"
+            },
+            {
+               "offset" : 10,
+               "value" : "NY"
+            },
+            {
+               "offset" : 14,
+               "value" : "United States"
+            }
+         ],
+         "types" : [ "locality", "political", "geocode" ]
+      },
+      {
+         "description" : "New York County, NY, United States",
+         "id" : "5ea7a59498dbfe5e165c5f8c61cad70bad1c863a",
+         "matched_substrings" : [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJOwE7_GTtwokRFq0uOwLSE9g",
+         "reference" : "CkQ6AAAAt5J9rh0nZvLj4LvXOltVV3CVxdIMcDq_uy44r5wG2OvK8y8JLd9Tf9isQwkRene8dEyPu1yrie5f78OgQy2EsxIQeH9YDWXHkhVfGRJVfcrD9xoU7fybCXzhe_wbU6Uxze2JRDSlpj0",
+         "structured_formatting" : {
+            "main_text" : "New York County",
+            "main_text_matched_substrings" : [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "NY, United States"
+         },
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "New York County"
+            },
+            {
+               "offset" : 17,
+               "value" : "NY"
+            },
+            {
+               "offset" : 21,
+               "value" : "United States"
+            }
+         ],
+         "types" : [ "administrative_area_level_2", "political", "geocode" ]
+      },
+      {
+         "description" : "North Bergen, NJ, United States",
+         "id" : "ecdd7fa2d988b74f380bafc6a137a67f3e37a2ca",
+         "matched_substrings" : [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVzsp1ARYwokRgZOfuykm_l4",
+         "reference" : "CkQ3AAAAEEoKvoYJMwThcQEH2wuxhFG0iyzO_1Nk7ghFKOvG7PaRVzBRU9WK_-GR-_rdRgxN_0inBtb7-ZRU6fCenJsU5xIQwENoywdtNx7X8dLrKFvD0xoUHDVUvpl3V1buvycBvtO2RN-zsuE",
+         "structured_formatting" : {
+            "main_text" : "North Bergen",
+            "main_text_matched_substrings" : [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "NJ, United States"
+         },
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "North Bergen"
+            },
+            {
+               "offset" : 14,
+               "value" : "NJ"
+            },
+            {
+               "offset" : 18,
+               "value" : "United States"
+            }
+         ],
+         "types" : [ "locality", "political", "geocode" ]
+      },
+      {
+         "description" : "Newark, NJ, United States",
+         "id" : "c71040d6268e495203b4ca7ca4299893601f63fc",
+         "matched_substrings" : [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHQ6aMnBTwokRc-T-3CrcvOE",
+         "reference" : "CkQxAAAArjjZbDkwEnweCyppqHzc36PROkothhZlUCezZaNw_e0WO0_hc3TMI2e_GTa4vQsS8T4Kgv0X-Y7-c2GkAAP1kRIQYFVfkQVQconDOihF2sj0-hoU9SdMDyguQCGsdi6IfbrOItn5uhg",
+         "structured_formatting" : {
+            "main_text" : "Newark",
+            "main_text_matched_substrings" : [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "NJ, United States"
+         },
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "Newark"
+            },
+            {
+               "offset" : 8,
+               "value" : "NJ"
+            },
+            {
+               "offset" : 12,
+               "value" : "United States"
+            }
+         ],
+         "types" : [ "locality", "political", "geocode" ]
+      },
+      {
+         "description" : "Nike Town, East 57th Street, New York, NY, United States",
+         "id" : "9d930d453ba82e5a9506aa3c8c2e638a8562d166",
+         "matched_substrings" : [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6-1bTeRYwokRHZNg6ikusek",
+         "reference" : "ClRHAAAAXDo-cWpcOEu-NJp1fM0Z3IGq59IhNRh5wefEz9EsYy5EEiurkEkjOhxl6zS_148d2mVi23NUIlkb0E1QVmBpPNZUXxzcJ40hl2kWcdtCIGQSENexfJ2XyqOUd5nxdlHqUbMaFDlocHoQIq18CkHjAPt49imy4VOh",
+         "structured_formatting" : {
+            "main_text" : "Nike Town",
+            "main_text_matched_substrings" : [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "East 57th Street, New York, NY, United States"
+         },
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "Nike Town"
+            },
+            {
+               "offset" : 11,
+               "value" : "East 57th Street"
+            },
+            {
+               "offset" : 29,
+               "value" : "New York"
+            },
+            {
+               "offset" : 39,
+               "value" : "NY"
+            },
+            {
+               "offset" : 43,
+               "value" : "United States"
+            }
+         ],
+         "types" : [ "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}
+ )

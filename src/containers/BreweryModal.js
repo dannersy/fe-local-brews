@@ -39,10 +39,14 @@ class BreweryModal extends Component {
 
   _populateBeers(){
     //let background = "";
+    let beerStyle = ""
     console.log("All beers: ", this.state.beers.length);
     let beers = this.state.beers.map(function(beer, i){
       if (!beer.availableId){
         return null
+      }
+      if (beer.style){
+        beerStyle = beer.style.shortName
       }
       // if (beer.labels && beer.labels.large){
       //   background = beer.labels.large
@@ -50,8 +54,9 @@ class BreweryModal extends Component {
       console.log("Beer with availableId: ",beer);
       return (
         <ListGroupItem className="beer-entry" key={i}>
-          <div>
+          <div className="title-box">
             <h4 id="beer-content">{beer.name}</h4>
+            <h4>{beerStyle}</h4>
           </div>
           <div id="beer-content" style={{marginBottom: "5px"}}>{beer.description}</div>
           <div>
@@ -85,7 +90,7 @@ class BreweryModal extends Component {
       <Modal show={this.state.showModal} onHide={ () => this.close() }>
         <Modal.Header closeButton>
           <Modal.Title>
-            <p className="title">{brewery.brewery.name}</p>
+            <p className="brewery-title">{brewery.brewery.name}</p>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -95,11 +100,11 @@ class BreweryModal extends Component {
           <hr />
 
           <h4>Description:</h4>
-          <p>{brewery.brewery.description}</p>
+          <p style={{marginTop: "10px"}}>{brewery.brewery.description}</p>
         </Modal.Body>
         <div className="modal-header">
           <h4 className="modal-title">
-            Beer:
+            Beer List:
           </h4>
         </div>
         <ListGroup>

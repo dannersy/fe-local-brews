@@ -4,6 +4,13 @@
   color: #233237;
 }
 
+.brewery-title {
+  width: 75%;
+  font-family: 'Kumar One', cursive;
+  font-size: 25px;
+  color: #233237;
+}
+
 .brewery-listing {
   font-family: 'Kumar One', cursive;
   font-size: 20px;
@@ -17,10 +24,6 @@
   margin-right: 15px;
 }
 
-.beer-entry {
-  position: relative;
-  overflow: hidden;
-}
 
 .list-group-item.active {
   z-index: 2;
@@ -43,10 +46,25 @@
   border-color: #98434B;
 }
 
+.beer-entry {
+  position: relative;
+  overflow: hidden;
+}
+
+.title-box {
+  display: flex;
+  justify-content: space-between;
+}
+
 #beer-content{
   position: relative;
   z-index: 5;
   opacity: 1;
+}
+
+#beer-content, h4 {
+  margin: 10px 0px 0px 0px;
+
 }
 
 #beer-image {

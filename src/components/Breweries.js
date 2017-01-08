@@ -55,7 +55,6 @@ class Breweries extends Component {
           active={selected}
           id={loc.breweryId}
           key={i}
-          style={{paddingRight: "5px", paddingBottom: "5px"}}
           >
           <div className="breweryImage" style={{backgroundImage: image}}></div>
           <h4 className="brewery-listing">{i+1}. {loc.brewery.name}</h4>

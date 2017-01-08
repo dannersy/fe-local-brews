@@ -7,21 +7,7 @@ let markerHeight = 30;
 let originX = markerWidth * .5;
 let originY = markerHeight;
 
-let markerStyle = {
-  // thanks Andreas Storm on CodePen!
-  zIndex: 5,
-  position: 'absolute',
-  cursor: 'pointer',
-  width: `${markerWidth}px`,
-  height: `${markerHeight}px`,
-  top: `-${originY}px`,
-  left: `-${originX}px`,
-  transform: "rotate(-45deg)",
-  margin: 0,
-  padding: 0,
-  borderRadius: "50% 50% 50% 0",
-  background: "#98434B"
-}
+let markerStyle = {}
 
 class Map extends Component {
 
@@ -29,14 +15,44 @@ class Map extends Component {
     let app = this;
     let results = this.props.results;
     let text = "";
+    let selected = false
     let locations = results.breweries.map(function(loc, i){
       if (results.selected === i){
+        markerStyle = {
+          // thanks Andreas Storm on CodePen!
+          zIndex: "1",
+          position: 'absolute',
+          cursor: 'pointer',
+          width: `${markerWidth}px`,
+          height: `${markerHeight}px`,
+          top: `-${originY}px`,
+          left: `-${originX}px`,
+          transform: "rotate(-45deg)",
+          margin: 0,
+          padding: 0,
+          borderRadius: "50% 50% 50% 0",
+          background: "#98434B"
+        }
         text = `${i+1}.` + loc.brewery.nameShortDisplay;
-        // markerStyle = {
-        //
-        // }
+        selected = true
       } else {
         text = `${i+1}`
+        selected = false
+        markerStyle = {
+          // thanks Andreas Storm on CodePen!
+          zIndex: 0,
+          position: 'absolute',
+          cursor: 'pointer',
+          width: `${markerWidth}px`,
+          height: `${markerHeight}px`,
+          top: `-${originY}px`,
+          left: `-${originX}px`,
+          transform: "rotate(-45deg)",
+          margin: 0,
+          padding: 0,
+          borderRadius: "50% 50% 50% 0",
+          background: "#98434B"
+        }
       }
       return(
         <Marker
@@ -47,6 +63,7 @@ class Map extends Component {
           lng={loc.longitude}
           text={text}
           location={loc}
+          selected={selected}
         />
       )
     })
