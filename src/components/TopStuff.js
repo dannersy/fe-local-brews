@@ -41,13 +41,14 @@ class TopStuff extends Component {
 
   render(){
     return (
-      <Navbar fluid staticTop style={{marginBottom: "0", height: "50px"}}>
+      <Navbar fluid staticTop style={{marginBottom: "0", height: "60px"}}>
         <Navbar.Header style={{marginBottom: "-10px"}}>
           <Navbar.Brand>
-            <p>Local Brews</p>
+            <p className="title">Local Brews</p>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
+        <Navbar.Collapse style={{overflow: "visible", backgroundColor: "#F8F8F8", padding: "0px"}} timeout={0}>
           <Geosuggest
             placeholder={"Enter a city, address or zipcode"}
             country={"us"}
@@ -61,7 +62,6 @@ class TopStuff extends Component {
             <MenuItem eventKey="10">10 mi</MenuItem>
           </DropdownButton>
           <Button type="submit" onClick={(event) => this.handleSubmit(event)}>Submit</Button>
-        <Navbar.Collapse style={{overflow: "visible", backgroundColor: "#F8F8F8"}}>
         </Navbar.Collapse>
       </Navbar>
     );

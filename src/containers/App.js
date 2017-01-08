@@ -47,7 +47,7 @@ class App extends Component {
           breweries: res,
           bounds: {
             center: {lat: searchValue.location.lat, lng: searchValue.location.lng},
-            zoom: 12
+            zoom: 13
           }
         })
       } else {

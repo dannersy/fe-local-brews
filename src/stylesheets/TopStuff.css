@@ -1,8 +1,19 @@
+.title {
+  font-family: 'Kumar One', cursive;
+  font-size: 35px;
+}
+
+.navbar-brand {
+  padding: 15px 15px;
+  float: left;
+  height: 50px;
+  line-height: 37px;
+}
 
 .geosuggest {
   z-index: 5;
   display: inline-block;
-  margin: 1em 1em 1em 0;
+  margin: 1em 1em 1em 15px;
   font-size: 18px;
   font-size: 12px;
   position: relative;

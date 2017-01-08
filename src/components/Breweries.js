@@ -15,7 +15,7 @@ class Breweries extends Component {
   _noMatch(){
     return (
       <div>
-        <h3>No results found with your search</h3>
+        <h3 style={{padding: "15px"}}>No results found with your search</h3>
       </div>
     )
   }
@@ -33,7 +33,7 @@ class Breweries extends Component {
     if (this.props.breweries.length === 0){
       return (
         <div>
-          <h3>Search a city, address or zipcode above to find breweries!</h3>
+          <h3 style={{padding: "10px"}}>Search a city, address or zipcode above to find breweries!</h3>
         </div>
       )
     }
@@ -50,10 +50,16 @@ class Breweries extends Component {
         image = 'url("http://placehold.it/100x100?text=No+Image")'
       }
       return (
-        <ListGroupItem onClick={() => app.props.selectLoc(i)} active={selected} id={loc.breweryId} key={i}>
+        <ListGroupItem
+          onClick={() => app.props.selectLoc(i)}
+          active={selected}
+          id={loc.breweryId}
+          key={i}
+          style={{paddingRight: "5px", paddingBottom: "5px"}}
+          >
           <div className="breweryImage" style={{backgroundImage: image}}></div>
-          <h3>{i+1}. {loc.brewery.name}</h3>
-          <p>{loc.locationTypeDisplay}</p>
+          <h4 className="brewery-listing">{i+1}. {loc.brewery.name}</h4>
+          <p style={{margin: "0px"}}>{loc.locationTypeDisplay}</p>
           {app._giveButton(selected)}
         </ListGroupItem>
       )
@@ -64,7 +70,7 @@ class Breweries extends Component {
 
   render(){
     return(
-      <ListGroup>
+      <ListGroup style={{marginTop: "10px"}}>
         {this.props.breweries ? this._populateList() : this._noMatch()}
       </ListGroup>
     )

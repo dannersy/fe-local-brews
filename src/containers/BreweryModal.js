@@ -38,27 +38,27 @@ class BreweryModal extends Component {
   }
 
   _populateBeers(){
-    let background = "";
+    //let background = "";
     console.log("All beers: ", this.state.beers.length);
     let beers = this.state.beers.map(function(beer, i){
       if (!beer.availableId){
         return null
       }
-      if (beer.labels && beer.labels.large){
-        background = beer.labels.large
-      }
+      // if (beer.labels && beer.labels.large){
+      //   background = beer.labels.large
+      // }
       console.log("Beer with availableId: ",beer);
       return (
         <ListGroupItem className="beer-entry" key={i}>
-          <div id="beer-image" style={{backgroundImage:`url(${background})`}}> </div>
           <div>
             <h4 id="beer-content">{beer.name}</h4>
           </div>
-          <div id="beer-content">{beer.description}</div>
+          <div id="beer-content" style={{marginBottom: "5px"}}>{beer.description}</div>
           <div>
-            <p id="beer-content">IBU: {beer.ibu}</p>
+            <p id="beer-content" style={{margin: "0px"}}>IBU: {beer.ibu}</p>
             <p id="beer-content">ABV: {beer.abv}</p>
           </div>
+          {/*<div id="beer-image" style={{backgroundImage:`url(${background})`}}> </div>*/}
         </ListGroupItem>
       )
     })
@@ -84,7 +84,9 @@ class BreweryModal extends Component {
     return(
       <Modal show={this.state.showModal} onHide={ () => this.close() }>
         <Modal.Header closeButton>
-          <Modal.Title>{brewery.brewery.name}</Modal.Title>
+          <Modal.Title>
+            <p className="title">{brewery.brewery.name}</p>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>{brewery.streetAddress}</p>
@@ -101,7 +103,7 @@ class BreweryModal extends Component {
           </h4>
         </div>
         <ListGroup>
-          {this.state.beers === undefined ? null : this._populateBeers()}
+          {this.state.beers === undefined ? <h4 style={{padding: "15px"}}>No Beers Listed</h4> : this._populateBeers()}
         </ListGroup>
         <Modal.Footer>
           <Button onClick={ () => this.close() }>Close</Button>
@@ -110,10 +112,13 @@ class BreweryModal extends Component {
     )
   }
   render(){
-    let brewery = this.props.breweries[this.props.selected]
+    let brewery = [];
+    if (this.props.breweries){
+      brewery = this.props.breweries[this.props.selected];
+    }
     return (
       <div>
-        {this.props.breweries ? this._buildModal(brewery) : <h4>No brews listed!</h4>}
+        {this.props.breweries ? this._buildModal(brewery) : null}
       </div>
     )
   }
