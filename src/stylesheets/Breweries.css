@@ -1,6 +1,7 @@
 .title {
   font-family: 'Kumar One', cursive;
   margin: 0px;
+  color: #233237;
 }
 
 .brewery-listing {
@@ -19,6 +20,27 @@
 .beer-entry {
   position: relative;
   overflow: hidden;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #98434B;
+  border-color: #98434B;
+}
+
+.list-group-item.active:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: #98434B;
+  border-color: #98434B;
+}
+
+.list-group-item.active:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: #98434B;
+  border-color: #98434B;
 }
 
 #beer-content{

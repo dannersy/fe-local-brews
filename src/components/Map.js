@@ -20,7 +20,7 @@ let markerStyle = {
   margin: 0,
   padding: 0,
   borderRadius: "50% 50% 50% 0",
-  background: "#428bca"
+  background: "#98434B"
 }
 
 class Map extends Component {

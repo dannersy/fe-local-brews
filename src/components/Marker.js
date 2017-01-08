@@ -19,7 +19,7 @@ class Marker extends Component {
 
   render(){
     return (
-    <div style={this.props.markerStyle} onClick={ () => this.props.selectLoc() }>
+    <div className="marker" style={this.props.markerStyle} onClick={ () => this.props.selectLoc() }>
       <div style={dot}>
         {this.props.text}
       </div>
