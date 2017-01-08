@@ -38,7 +38,7 @@ class Breweries extends Component {
       )
     }
     let app = this
-    let image = 'url("http://placehold.it/100x100?text=No+Image")'
+    let image = 'url("https://placehold.it/100x100?text=No+Image")'
     let breweryList = app.props.breweries.map(function(loc, i){
       let selected = false;
       if (app.props.selected === i){
@@ -47,7 +47,7 @@ class Breweries extends Component {
       if (loc.brewery.images){
         image = `url(${loc.brewery.images.medium})`;
       } else {
-        image = 'url("http://placehold.it/100x100?text=No+Image")'
+        image = 'url("https://placehold.it/100x100?text=No+Image")'
       }
       return (
         <ListGroupItem
