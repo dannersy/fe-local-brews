@@ -5,6 +5,10 @@
   "devDependencies": {
     "react-scripts": "0.8.4"
   },
+  "engines": {
+  "node": "6.6.0",
+  "npm": "3.10.6"
+  },
   "dependencies": {
     "axios": "^0.15.3",
     "google-maps-react": "^1.0.19",
@@ -14,7 +18,7 @@
     "react-geosuggest": "^2.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
