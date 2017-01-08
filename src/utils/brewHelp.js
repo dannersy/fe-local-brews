@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://www.wrathofcode.io"
+const url = "https://fathomless-hamlet-74644.herokuapp.com"
 // const url = "http://localhost:8080"
 
 const Brew = {
